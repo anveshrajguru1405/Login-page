@@ -209,7 +209,7 @@ app.post("/reset-password", (req, res) => {
   });
 });
 
-app.get("/reset-password", (req, res) => { 
+app.get("/reset-password", (req, res) => {
   const { userId } = req.query;
   console.log(userId);
   res.render("new-password", { userId });
@@ -272,7 +272,11 @@ app.get("/:roll_no", (req, res) => {
       if (err) throw err;
       console.log(result[0]);
       const info = result[0];
-      res.render("userInfo", { info });
+      if (info) {
+        res.render("userInfo", { info });
+      } else {
+        res.send("Doesn't found");
+      }
     } catch (err) {
       res.status(404).json({ Success: false });
     }
