@@ -4,7 +4,7 @@ const path = require("path");
 const app = express();
 const mysql = require("mysql2");
 const methodOverride = require("method-override");
-const session = require("express-session");
+const session = require("cookie-session");
 const dotenv = require("dotenv").config();
 
 app.use(methodOverride("_method"));
